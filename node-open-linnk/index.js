@@ -5,12 +5,9 @@ const fs = require('fs');
 dotenv.config({ path: './.env' });
 
 const headless = JSON.parse(process.env.HEADLESS);
-const readListLink = fs.readFileSync('./list.txt', { encoding: 'utf8' }).split(',');
+const readListLink = fs.readFileSync('./list.txt', { encoding: 'utf8' }).split('\n');
 
 (async () => {
-  const successLink = [];
-  const errLink = [];
-
   const browser = await puppeteer.launch({
     headless: headless,
     defaultViewport: { width: 1000, height: 1000 },
